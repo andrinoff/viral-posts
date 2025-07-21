@@ -264,16 +264,14 @@ function createSVGFromElement(element, rect, computedStyle) {
             <defs>
                 <style>
                     .post-bg { fill: ${bgColor}; }
-                    .primary-text { fill: ${textColor}; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-                    .secondary-text { fill: ${secondaryColor}; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+                    .primary-text { fill: ${textColor}; font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+                    .secondary-text { fill: ${secondaryColor}; font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
                     .bold { font-weight: bold; }
                 </style>
             </defs>
             
-            <!-- Background -->
             <rect width="100%" height="100%" class="post-bg" rx="16"/>
             
-            <!-- Avatar -->
             <circle cx="44" cy="44" r="24" fill="url(#avatarGradient)"/>
             <defs>
                 <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -285,7 +283,6 @@ function createSVGFromElement(element, rect, computedStyle) {
               displayName
             )}</text>
             
-            <!-- Display Name -->
             <text x="80" y="35" class="primary-text bold" font-size="15">${displayName}</text>
             ${
               isVerified
@@ -297,32 +294,31 @@ function createSVGFromElement(element, rect, computedStyle) {
                 : ""
             }
             
-            <!-- Username and time -->
             <text x="80" y="52" class="secondary-text" font-size="15">${username} · ${timeText}</text>
             
-            <!-- Post content -->
             ${createSVGTextLines(postText, 20, 90, textColor)}
             
-            <!-- Stats line -->
             <line x1="20" y1="${rect.height - 50}" x2="${
     rect.width - 20
   }" y2="${rect.height - 50}" stroke="${
     isDark ? "#2f3336" : "#ebeef0"
   }" stroke-width="1"/>
             
-            <!-- Stats -->
-            <text x="20" y="${
-              rect.height - 25
-            }" class="secondary-text" font-size="13">💬 ${replies}</text>
-            <text x="120" y="${
-              rect.height - 25
-            }" class="secondary-text" font-size="13">🔁 ${retweets}</text>
-            <text x="220" y="${
-              rect.height - 25
-            }" class="secondary-text" font-size="13">❤️ ${likes}</text>
-            <text x="320" y="${
-              rect.height - 25
-            }" class="secondary-text" font-size="13">📤</text>
+            <g transform="translate(20, ${rect.height - 35})">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="${secondaryColor}"><g><path d="M1.751 10.25c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.9-1.54 5.44-3.823 6.81l-2.06 1.22-.002-3.69c.008-2.5-2.038-4.52-4.532-4.52H5.75c-1.105 0-2-.9-2-2s.895-2 2-2h8.25c.414 0 .75.34.75.75s-.336.75-.75.75H5.75c-.276 0-.5.22-.5.5s.224.5.5.5h6.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5H6.26l-1.07-1.07c-1.37-1.37-2.19-3.12-2.19-5.01zm21.5 8.5c.414 0 .75-.34.75-.75v-3.03c0-1.2-.81-2.24-1.95-2.47-4.22-.85-8.2-1.93-11.07-3.29-.28-.13-.59-.2-.9-.2H5.75c-.276 0-.5.22-.5.5s.224.5.5.5h2.75c.16 0 .32.04.47.11 2.85 1.36 6.8 2.43 11.03 3.28.28.06.49.3.49.58v2.22l-2.14-1.27c-1.1-.65-2.43-.98-3.78-.98H5.75c-1.105 0-2 .9-2 2s.895 2 2 2h4.51c1.29 0 2.5.52 3.39 1.41l3.1 3.1c.15.15.34.22.53.22h.01c.19 0 .38-.07.53-.22l2.12-2.12.01-.01z"></path></g></svg>
+                <text x="25" y="15" class="secondary-text" font-size="13">${replies}</text>
+            </g>
+            <g transform="translate(120, ${rect.height - 35})">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="${secondaryColor}"><g><path d="M1.75 5.5c0-1.24 1.01-2.25 2.25-2.25h16.5c1.24 0 2.25 1.01 2.25 2.25v13c0 1.24-1.01 2.25-2.25 2.25H4c-1.24 0-2.25-1.01-2.25-2.25v-13zm2.25-.75c-.41 0-.75.34-.75.75v13c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75v-13c0-.41-.34-.75-.75-.75H4z"></path><path d="M12 8.75c-1.04 0-1.89.85-1.89 1.89v2.25h-2.25c-.41 0-.75.34-.75.75s.34.75.75.75h2.25v2.25c0 .41.34.75.75.75s.75-.34.75-.75v-2.25h2.25c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-2.25V10.5c0-1.04-.85-1.89-1.89-1.89zM19 15.5c0-1.24-1.01-2.25-2.25-2.25H7.25c-1.24 0-2.25 1.01-2.25 2.25v1.25c0 .41.34.75.75.75s.75-.34.75-.75V15.5c0-.41.34-.75.75-.75h9.5c.41 0 .75.34.75.75v1.25c0 .41.34.75.75.75s.75-.34.75-.75v-1.25z"></path></g></svg>
+                <text x="25" y="15" class="secondary-text" font-size="13">${retweets}</text>
+            </g>
+            <g transform="translate(220, ${rect.height - 35})">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="${secondaryColor}"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 6.03 11.536 8.55 11.536.002 0 .004 0 .005-.002.002 0 .003 0 .005 0 2.52-.002 8.55-5.797 8.55-11.535 0-2.267-1.823-4.255-3.904-4.255-1.927 0-3.182 1.432-3.838 2.28-.15.2-.42.2-.572 0-.654-.848-1.91-2.28-3.838-2.28z"></path></g></svg>
+                <text x="25" y="15" class="secondary-text" font-size="13">${likes}</text>
+            </g>
+             <g transform="translate(320, ${rect.height - 35})">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="${secondaryColor}"><g><path d="M12 2.5c-5.25 0-9.5 4.25-9.5 9.5s4.25 9.5 9.5 9.5 9.5-4.25 9.5-9.5-4.25-9.5-9.5-9.5zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path><path d="M12 11.25c-.41 0-.75.34-.75.75v4.5c0 .41.34.75.75.75s.75-.34.75-.75v-4.5c0-.41-.34-.75-.75-.75zm0-3.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path></g></svg>
+            </g>
         </svg>
     `;
 }
@@ -364,11 +360,11 @@ function drawPostToCanvas(ctx, rect) {
   // Text
   ctx.fillStyle = isDark ? "#ffffff" : "#0f1419";
   ctx.font =
-    'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    'bold 15px "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
   ctx.fillText("Screenshot Generated", 20, 50);
 
   ctx.font =
-    '13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    '13px "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
   ctx.fillText("Your viral post content appears here", 20, 80);
   ctx.fillText(
     `@${elements.username.value} • ${elements.timeStamp.value}`,
@@ -469,7 +465,7 @@ function printPost() {
                     margin: 0; 
                     padding: 20px; 
                     background: ${isDark ? "#000" : "#fff"}; 
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -479,7 +475,7 @@ function printPost() {
                     max-width: 500px;
                     border-radius: 16px;
                     padding: 20px;
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
                     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
                     transition: all 0.3s ease;
                 }
@@ -621,7 +617,7 @@ async function drawElementToCanvas(ctx, element, rect) {
   // Set text properties
   ctx.fillStyle = computedStyle.color || "#ffffff";
   ctx.font =
-    '14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    '14px "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
   ctx.textBaseline = "top";
 
   // This is a simplified version - for full functionality, you'd want to use html2canvas library
@@ -653,7 +649,7 @@ function downloadScreenshotAlt() {
         <head>
             <title>Viral Post Screenshot</title>
             <style>
-                body { margin: 0; padding: 20px; background: white; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+                body { margin: 0; padding: 20px; background: white; font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
                 .twitter-post { margin: 0 auto; }
                 ${
                   document.querySelector("style")

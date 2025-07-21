@@ -119,6 +119,26 @@ Thread 👇</textarea
         <button id="downloadBtn" class="download-btn">
           📱 Download Screenshot
         </button>
+        <button
+          id="copyBtn"
+          class="download-btn"
+          style="
+            background: linear-gradient(45deg, #28a745, #20c997);
+            margin-top: 10px;
+          "
+        >
+          📋 Copy to Clipboard
+        </button>
+        <button
+          id="printBtn"
+          class="download-btn"
+          style="
+            background: linear-gradient(45deg, #6f42c1, #e83e8c);
+            margin-top: 10px;
+          "
+        >
+          🖨️ Print/Save as PDF
+        </button>
       </div>
 
       <div class="preview-panel">
@@ -159,36 +179,80 @@ Thread 👇</textarea
 
           <div class="post-stats">
             <div class="stat-item">
-              <span class="stat-icon">💬</span>
+              <span class="stat-icon"
+                ><svg
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
+                  />
+                </svg>
+              </span>
+              <span id="previewLikes">42K</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon"
+                ><svg
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z"
+                    clip-rule="evenodd"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
               <span id="previewReplies">1.2K</span>
             </div>
             <div class="stat-item">
               <span class="stat-icon"
                 ><svg
-                  width="20px"
-                  height="20px"
-                  viewBox="0 0 20 20"
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
                 >
                   <path
-                    d="M5 13V8h2L3.5 4 0 8h2v6a2 2 0 0 0 2 2h9.482l-2.638-3H5zm4.156-6L6.518 4H16c1.104 0 2 .897 2 2v6h2l-3.5 4-3.5-4h2V7H9.156z"
-                  /></svg
-              ></span>
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m15.141 6 5.518 4.95a1.05 1.05 0 0 1 0 1.549l-5.612 5.088m-6.154-3.214v1.615a.95.95 0 0 0 1.525.845l5.108-4.251a1.1 1.1 0 0 0 0-1.646l-5.108-4.251a.95.95 0 0 0-1.525.846v1.7c-3.312 0-6 2.979-6 6.654v1.329a.7.7 0 0 0 1.344.353 5.174 5.174 0 0 1 4.652-3.191l.004-.003Z"
+                  />
+                </svg>
+              </span>
               <span id="previewRetweets">8.5K</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-icon">❤️</span>
-              <span id="previewLikes">42K</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-icon">📤</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

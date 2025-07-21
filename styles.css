@@ -5,7 +5,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   padding: 20px;
@@ -64,6 +65,7 @@ h1 {
   border-radius: 12px;
   font-size: 14px;
   transition: all 0.3s ease;
+  font-family: inherit;
 }
 
 .form-group input:focus,
@@ -75,7 +77,6 @@ h1 {
 
 .form-group textarea {
   resize: vertical;
-  font-family: inherit;
 }
 
 .char-count {
@@ -129,7 +130,8 @@ h1 {
   margin: 0 auto;
   border-radius: 16px;
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -270,6 +272,9 @@ h1 {
 
 .stat-icon {
   font-size: 16px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* Responsive */
