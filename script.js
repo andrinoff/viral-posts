@@ -531,8 +531,6 @@ function printPost() {
                 .verified-badge {
                     color: #1d9bf0;
                     font-size: 16px;
-                    background: #1d9bf0;
-                    color: white;
                     border-radius: 50%;
                     width: 16px;
                     height: 16px;
