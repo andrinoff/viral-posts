@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viral Post Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Viral Post Screenshot Generator</h1>
+
+      <div class="editor-panel">
+        <h2>Customize Your Post</h2>
+
+        <div class="form-group">
+          <label for="displayName">Display Name:</label>
+          <input
+            type="text"
+            id="displayName"
+            value="Viral Content Creator"
+            maxlength="50"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username (@):</label>
+          <input
+            type="text"
+            id="username"
+            value="viralcreator"
+            maxlength="30"
+            placeholder="without @"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="postText">Post Content:</label>
+          <textarea
+            id="postText"
+            rows="4"
+            maxlength="280"
+            placeholder="Write your viral post here..."
+          >
+Just broke the internet with this one simple trick that doctors don't want you to know! 🔥🔥🔥
+
+Thread 👇</textarea
+          >
+          <div class="char-count"><span id="charCount">0</span>/280</div>
+        </div>
+
+        <div class="form-group">
+          <label for="likes">Likes:</label>
+          <input
+            type="number"
+            id="likes"
+            value="42000"
+            min="0"
+            max="99999999"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="retweets">Retweets:</label>
+          <input
+            type="number"
+            id="retweets"
+            value="8500"
+            min="0"
+            max="9999999"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="replies">Replies:</label>
+          <input
+            type="number"
+            id="replies"
+            value="1200"
+            min="0"
+            max="9999999"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="timeStamp">Time:</label>
+          <input
+            type="text"
+            id="timeStamp"
+            value="2h"
+            placeholder="e.g., 2h, 1d, 3m"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="avatarUrl">Avatar URL (optional):</label>
+          <input
+            type="url"
+            id="avatarUrl"
+            placeholder="https://example.com/avatar.jpg"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="verified">Verified Account:</label>
+          <input type="checkbox" id="verified" />
+        </div>
+
+        <div class="form-group theme-selector">
+          <label>Theme:</label>
+          <label class="radio-label">
+            <input type="radio" name="theme" value="dark" checked /> Dark
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="theme" value="light" /> Light
+          </label>
+        </div>
+
+        <button id="downloadBtn" class="download-btn">
+          📱 Download Screenshot
+        </button>
+      </div>
+
+      <div class="preview-panel">
+        <h2>Preview</h2>
+        <div id="twitterPost" class="twitter-post dark-theme">
+          <div class="post-header">
+            <div class="avatar-container">
+              <div class="avatar" id="postAvatar">
+                <span class="avatar-text">VC</span>
+              </div>
+            </div>
+            <div class="user-info">
+              <div class="display-name">
+                <span id="previewDisplayName">Viral Content Creator</span>
+                <span
+                  class="verified-badge"
+                  id="verifiedBadge"
+                  style="display: none"
+                  >✓</span
+                >
+              </div>
+              <div class="username-time">
+                <span class="username"
+                  >@<span id="previewUsername">viralcreator</span></span
+                >
+                <span class="separator">·</span>
+                <span class="time" id="previewTime">2h</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-content">
+            <div id="previewPostText" class="post-text">
+              Just broke the internet with this one simple trick that doctors
+              don't want you to know! 🔥🔥🔥 Thread 👇
+            </div>
+          </div>
+
+          <div class="post-stats">
+            <div class="stat-item">
+              <span class="stat-icon">💬</span>
+              <span id="previewReplies">1.2K</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon"
+                ><svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M5 13V8h2L3.5 4 0 8h2v6a2 2 0 0 0 2 2h9.482l-2.638-3H5zm4.156-6L6.518 4H16c1.104 0 2 .897 2 2v6h2l-3.5 4-3.5-4h2V7H9.156z"
+                  /></svg
+              ></span>
+              <span id="previewRetweets">8.5K</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">❤️</span>
+              <span id="previewLikes">42K</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">📤</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
