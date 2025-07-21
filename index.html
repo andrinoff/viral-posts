@@ -96,6 +96,20 @@ Follow me on GitHub for more viral content! 🚀🔥
         </div>
 
         <div class="form-group">
+          <label for="postImage">Image (optional):</label>
+          <div class="image-drop-zone" id="imageDropZone">
+            <p>Drag & drop an image here, or click to select</p>
+            <input type="file" id="postImage" accept="image/*" hidden />
+          </div>
+          <input
+            type="url"
+            id="imageUrl"
+            placeholder="Or enter image URL"
+            style="margin-top: 10px"
+          />
+        </div>
+
+        <div class="form-group">
           <label for="verified">Verified Account:</label>
           <input type="checkbox" id="verified" />
         </div>
@@ -182,6 +196,13 @@ Follow me on GitHub for more viral content! 🚀🔥
             <div id="previewPostText" class="post-text">
               Just broke the internet with this one simple trick that doctors
               don't want you to know! 🔥🔥🔥 Thread 👇
+            </div>
+            <div
+              class="post-image-container"
+              id="postImageContainer"
+              style="display: none"
+            >
+              <img id="previewImage" src="" alt="Post image" />
             </div>
           </div>
 

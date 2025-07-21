@@ -14,6 +14,11 @@ const elements = {
   copyBtn: document.getElementById("copyBtn"),
   printBtn: document.getElementById("printBtn"),
   twitterPost: document.getElementById("twitterPost"),
+  postImage: document.getElementById("postImage"),
+  imageUrl: document.getElementById("imageUrl"),
+  postImageContainer: document.getElementById("postImageContainer"),
+  previewImage: document.getElementById("previewImage"),
+  imageDropZone: document.getElementById("imageDropZone"),
 
   // Preview elements
   previewDisplayName: document.getElementById("previewDisplayName"),
@@ -65,6 +70,26 @@ function updateAvatar() {
     elements.postAvatar.innerHTML = `<span class="avatar-text">${generateAvatarText(
       displayName
     )}</span>`;
+  }
+}
+
+function handleImageUpload(file) {
+  const imageUrl = elements.imageUrl.value.trim();
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      elements.previewImage.src = e.target.result;
+      elements.postImageContainer.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+    elements.imageUrl.value = ""; // Clear the URL input
+  } else if (imageUrl) {
+    elements.previewImage.src = imageUrl;
+    elements.postImageContainer.style.display = "block";
+  } else {
+    elements.previewImage.src = "";
+    elements.postImageContainer.style.display = "none";
   }
 }
 
@@ -126,6 +151,35 @@ function setupEventListeners() {
   // Theme change listeners
   document.querySelectorAll('input[name="theme"]').forEach((radio) => {
     radio.addEventListener("change", updateTheme);
+  });
+
+  // Image Drop Zone
+  elements.imageDropZone.addEventListener("click", () => {
+    elements.postImage.click();
+  });
+
+  elements.imageDropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    elements.imageDropZone.classList.add("dragover");
+  });
+
+  elements.imageDropZone.addEventListener("dragleave", () => {
+    elements.imageDropZone.classList.remove("dragover");
+  });
+
+  elements.imageDropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    elements.imageDropZone.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    handleImageUpload(file);
+  });
+
+  elements.postImage.addEventListener("change", (e) => {
+    handleImageUpload(e.target.files[0]);
+  });
+
+  elements.imageUrl.addEventListener("input", () => {
+    handleImageUpload(null);
   });
 
   // Download button
@@ -309,7 +363,7 @@ function createSVGFromElement(element, rect, computedStyle) {
                 <text x="25" y="15" class="secondary-text" font-size="13">${replies}</text>
             </g>
             <g transform="translate(120, ${rect.height - 35})">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="${secondaryColor}"><g><path d="M1.75 5.5c0-1.24 1.01-2.25 2.25-2.25h16.5c1.24 0 2.25 1.01 2.25 2.25v13c0 1.24-1.01 2.25-2.25 2.25H4c-1.24 0-2.25-1.01-2.25-2.25v-13zm2.25-.75c-.41 0-.75.34-.75.75v13c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75v-13c0-.41-.34-.75-.75-.75H4z"></path><path d="M12 8.75c-1.04 0-1.89.85-1.89 1.89v2.25h-2.25c-.41 0-.75.34-.75.75s.34.75.75.75h2.25v2.25c0 .41.34.75.75.75s.75-.34.75-.75v-2.25h2.25c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-2.25V10.5c0-1.04-.85-1.89-1.89-1.89zM19 15.5c0-1.24-1.01-2.25-2.25-2.25H7.25c-1.24 0-2.25 1.01-2.25 2.25v1.25c0 .41.34.75.75.75s.75-.34.75-.75V15.5c0-.41.34-.75.75-.75h9.5c.41 0 .75.34.75.75v1.25c0 .41.34.75.75.75s.75-.34.75-.75v-1.25z"></path></g></svg>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="${secondaryColor}"><g><path d="M1.75 5.5c0-1.24 1.01-2.25 2.25-2.25h16.5c1.24 0 2.25 1.01 2.25 2.25v13c0 1.24-1.01 2.25-2.25-2.25H4c-1.24 0-2.25-1.01-2.25-2.25v-13zm2.25-.75c-.41 0-.75.34-.75.75v13c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75v-13c0-.41-.34-.75-.75-.75H4z"></path><path d="M12 8.75c-1.04 0-1.89.85-1.89 1.89v2.25h-2.25c-.41 0-.75.34-.75.75s.34.75.75.75h2.25v2.25c0 .41.34.75.75.75s.75-.34.75-.75v-2.25h2.25c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-2.25V10.5c0-1.04-.85-1.89-1.89-1.89zM19 15.5c0-1.24-1.01-2.25-2.25-2.25H7.25c-1.24 0-2.25 1.01-2.25 2.25v1.25c0 .41.34.75.75.75s.75-.34.75-.75V15.5c0-.41.34-.75.75-.75h9.5c.41 0 .75.34.75.75v1.25c0 .41.34.75.75.75s.75-.34.75-.75v-1.25z"></path></g></svg>
                 <text x="25" y="15" class="secondary-text" font-size="13">${retweets}</text>
             </g>
             <g transform="translate(220, ${rect.height - 35})">

@@ -94,6 +94,25 @@ h1 {
   resize: vertical;
 }
 
+.image-drop-zone {
+  border: 2px dashed #38444d;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.image-drop-zone.dragover {
+  border-color: #1da1f2;
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.image-drop-zone p {
+  color: #aab8c2;
+  margin: 0;
+}
+
 .char-count {
   text-align: right;
   font-size: 12px;
@@ -253,6 +272,23 @@ h1 {
   line-height: 20px;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.post-image-container {
+  margin-top: 12px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #2f3336;
+}
+
+.light-theme .post-image-container {
+  border-color: #ebeef0;
+}
+
+#previewImage {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .post-stats {
